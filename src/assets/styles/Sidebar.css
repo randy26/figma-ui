@@ -1,0 +1,97 @@
+.sidebar {
+  width: 270px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #1e3c72, #2a5298);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  border: 2px solid #61dafb;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details .name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.user-details .email {
+  font-size: 0.8rem;
+  color: #a0cfff;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 0.3rem;
+}
+
+/* NavLink base */
+.sidebar-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.5rem 0.6rem 1rem;
+  font-size: 0.95rem;
+  color: #ffffffcc;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  border-left: 3px solid transparent;
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Hover */
+.sidebar-menu li a:hover {
+  color: #61dafb;
+}
+
+/* Activo (resaltado + bonus) */
+.sidebar-menu li a.active {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-left: 4px solid #00e0ff;
+  background-color: rgba(255, 255, 255, 0.10);
+  box-shadow: inset 2px 0 0 #00e0ff;
+}
+
+/* Íconos alineados y con herencia de color */
+.sidebar-menu li a svg {
+  min-width: 20px;
+  color: inherit;
+}
