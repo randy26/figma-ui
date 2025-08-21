@@ -8,7 +8,7 @@ html, body {
 
 .login-background {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background: linear-gradient(135deg, #0A1F44, #2a5298);
   display: flex;
   align-items: center;
   justify-content: center;

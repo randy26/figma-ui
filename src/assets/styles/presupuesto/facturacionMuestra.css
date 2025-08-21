@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400&display=swap');
+
+.opciones-container {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 13px;
+   max-width: 1200px;
+  margin-top: -15px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #2c3e50;
+}
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  line-height: 1.5;
+  position: relative;
+}
+
+.input-inline {
+  width: 42px;
+  padding: 4px 6px;
+  margin: 0 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #f9fafb;
+  color: #334155;
+}
+
+/* ✔️ Custom checkbox */
+.custom-checkbox,
+.custom-radio {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #a78bfa;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid #7c3aed;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* 🔘 Custom radio */
+.custom-radio {
+  border-radius: 50%;
+}
+
+.custom-radio:checked::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  background-color: #7c3aed;
+  border-radius: 50%;
+}

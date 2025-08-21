@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.tabs-container {
+  max-width: 100%;
+  margin: 0px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13.5px; /* ajustado para elegancia */
+  color: #2e2e2e;
+}
+
+/* Barra de progreso */
+.progress-bar-container {
+  position: relative;
+  height: 8px;
+  background-color: #edf2f7;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #eab308;
+  transition: width 0.4s ease-in-out;
+}
+
+.progress-label {
+  position: absolute;
+  top: -24px;
+  right: 12px;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Tabs */
+.tabs-header {
+  display: flex;
+  background-color: #0A1F44;
+  border-bottom: 2px solid #00A4E4;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 10px 12px;
+  text-align: center;
+  border: none;
+  background-color: #0A1F44;
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.3s, color 0.3s;
+  letter-spacing: 0.3px;
+}
+
+.tab-item:hover {
+  background-color: #0A1F44;
+  color: white;
+}
+
+.tab-item.active {
+  background-color: #00A4E4;
+  color: white;
+  border-bottom: 3px solid #00A4E4;
+}
+.consulta-title {
+  font-size: 12px;            /* tamaño más pequeño */
+  color: #6B7280;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;                   /* espacio entre viñeta y texto */
+  padding-left: 20px;         /* mueve el título a la derecha desde el borde izquierdo */
+  font-weight: 400;
+}
+
+/* Viñeta antes del texto */
+.consulta-title::before {
+  content: "•";               /* viñeta */
+  color: #00A4E4;
+  font-size: 16px;
+  line-height: 1;
+}
+
+
+/* Íconos */
+.tab-icon {
+  font-size: 14px;
+}
+
+/* Contenido */
+.tab-content {
+  padding: 24px;
+  background-color: #f9f9f9;
+  font-size: 13.5px;
+}
+
+/* Footer */
+.tabs-footer {
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.slider-button {
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  background-color: #ccc;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider-button:hover {
+  background-color: #bbb;
+}
+
+.slider-button.primary {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.slider-button.primary:hover {
+  background-color: #0d8ee2;
+}
+
+.slider-button.submit {
+  background-color: #28a745;
+  color: white;
+  border: 1px solid #1f8137;
+}
+
+.slider-button.submit:hover {
+  background-color: #218838;
+}

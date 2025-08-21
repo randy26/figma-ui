@@ -1,73 +1,58 @@
 import '../assets/styles/Sidebar.css';
-import { CiImport, CiSearch, CiShuffle, CiRead } from "react-icons/ci";
-import { FaUserCircle } from "react-icons/fa";
-import { PiGridFourLight } from "react-icons/pi"; // Para "Tablero"
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getMenus } from '../service/authService';
+import type { MenuDto } from '../service/authService';
 
-const Sidebar = () => {
+// íconos
+import {
+  CiImport,
+  CiSearch,
+  CiShuffle,
+  CiRead,
+} from "react-icons/ci";
+import { FaUserCircle } from "react-icons/fa";
+import { PiGridFourLight } from "react-icons/pi";
+
+const iconMap: Record<string, React.ReactNode> = {
+  tablero: <PiGridFourLight size={18} />,
+  presupuestos: <CiImport size={18} />,
+  facturacion: <CiShuffle size={18} />,
+  publicaciones: <FaUserCircle size={18} />,
+  observaciones: <CiRead size={18} />,
+  consultas: <CiSearch size={18} />,
+};
+
+const HorizontalMenu = () => {
+  const [menus, setMenus] = useState<MenuDto[]>([]);
+
+  useEffect(() => {
+    const fetchMenus = async () => {
+      try {
+        const data = await getMenus();
+        setMenus(data);
+      } catch (error) {
+        console.error("Error cargando menús:", error);
+      }
+    };
+
+    fetchMenus();
+  }, []);
+
   return (
-    <div className="sidebar">
-      <div className="sidebar-header">
-        <span>Proanalisis</span>
-        {/* <span>{'<'}</span> */}
-      </div>
-
-      <div className="user-info">
-        <img
-          src="https://randomuser.me/api/portraits/women/44.jpg"
-          alt="User Avatar"
-          className="avatar"
-        />
-        <div className="user-details">
-          <span className="name">Javier Laudisi</span>
-          <span className="email">prueba@proanalisis.com.ar</span>
-        </div>
-      </div>
-<ul className="sidebar-menu">
-  <li>
-    <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'active' : ''}>
-      <PiGridFourLight size={18} />
-      <span>Tablero</span>
-    </NavLink>
-  </li>
-  <li>
-    <NavLink to="/presupuestos" className={({ isActive }) => isActive ? 'active' : ''}>
-      <CiImport size={18} />
-      <span>Presupuestos</span>
-    </NavLink>
-  </li>
-  <li>
-    <NavLink to="/facturacion" className={({ isActive }) => isActive ? 'active' : ''}>
-      <CiShuffle size={18} />
-      <span>Facturación</span>
-    </NavLink>
-  </li>
-  <li>
-    <NavLink to="/publicaciones" className={({ isActive }) => isActive ? 'active' : ''}>
-      <FaUserCircle size={18} />
-      <span>Publicaciones</span>
-    </NavLink>
-  </li>
-  <li>
-    <NavLink to="/observaciones" className={({ isActive }) => isActive ? 'active' : ''}>
-      <CiRead size={18} />
-      <span>Observaciones Ingresos</span>
-    </NavLink>
-  </li>
-  <li>
-    <NavLink to="/consultas" className={({ isActive }) => isActive ? 'active' : ''}>
-      <CiSearch size={18} />
-      <span>Consultas</span>
-    </NavLink>
-  </li>
-</ul>
-
-
-      <div className="settings">
-        <span>Settings</span>
-      </div>
-    </div>
+    <nav className="horizontal-menu">
+      <ul>
+        {menus.map(menu => (
+          <li key={menu.id}>
+            <NavLink to={menu.url} className={({ isActive }) => isActive ? 'active' : ''}>
+              {iconMap[menu.icono] || <FaUserCircle size={18} />}
+              <span>{menu.nombre}</span>
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
-export default Sidebar;
+export default HorizontalMenu;

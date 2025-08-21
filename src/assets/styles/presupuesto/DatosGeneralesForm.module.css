@@ -1,0 +1,77 @@
+.container {
+  max-width: 1200px;
+  margin-top: -15px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Roboto', sans-serif; /* fuente elegante */
+  color: #2c3e50; /* color base elegante azul oscuro */
+}
+
+.title {
+  font-size: 1.5rem; /* un poco más pequeño */
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 1.2rem;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.column {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  color: #5d6d7e; /* gris azulado elegante */
+  font-size: 11px; /* más pequeño */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input {
+  border: none;
+  border-bottom: 1.5px solid #a3b1c2; /* borde más grueso y color elegante */
+  background: transparent;
+  padding: 5px 6px;
+  font-size: 13px; /* más pequeño */
+  color: #273746; /* azul oscuro */
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input:focus {
+  border-color: #2980b9; /* azul más vibrante al foco */
+  box-shadow: 0 1px 0 0 #2980b9;
+}
+
+.input::placeholder {
+  color: #85929e;
+  font-size: 12px;
+}
+.checkboxBPL {
+  margin-top: 11px; /* ahora sí tiene efecto */
+  align-self: flex-start; /* mantiene alineación al inicio */
+  cursor: pointer; /* opcional */
+}
+
+/* Para que la etiqueta esté pegada al checkbox, puedes hacer: */
+
+.checkboxBPL + label {
+  margin-left: 0.25rem; /* un pequeño espacio entre checkbox y texto */
+}

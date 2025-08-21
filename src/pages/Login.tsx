@@ -2,21 +2,23 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../assets/styles/Login.css';
 import { FaUser, FaLock } from 'react-icons/fa';
+import { login } from '../service/authService';
 
 const Login = () => {
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (user === 'admin' && pass === '1234') {
-      localStorage.setItem('auth', 'true');
+  const handleLogin = async () => {
+    try {
+      const response = await login({ usuario: user, password: pass });
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('usuario', response.usuario);
       navigate('/welcome');
-    } else {
-      alert('Credenciales incorrectas');
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Error inesperado');
     }
   };
-
   return (
     <div className="login-background">
       <div className="login-container">

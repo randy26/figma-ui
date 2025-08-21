@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.consulta-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+  padding: 1.5rem;
+  background-color: #fefefe;
+}
+
+.consulta-title {
+  font-size: 1.8rem;
+  color: #6B7280;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  flex-grow: 1;
+  min-width: 50px;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.consulta-buscador {
+  width: 50%;
+  font-size: 0.9rem;
+  border: 1.5px solid #d1d5db;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(100, 116, 139, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+}
+
+.consulta-buscador:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  outline: none;
+}
+
+.nuevo-btn {
+  background-color: #2563eb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  min-width: 160px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.nuevo-btn:hover {
+  background-color: #1e40af;
+  box-shadow: 0 6px 12px rgba(30, 64, 175, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Tabla con tipografía más pequeña y efecto */
+.consulta-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  overflow: hidden;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.8rem; /* tamaño reducido */
+}
+
+.consulta-table th {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #e0e7ff;
+  color: #ffffff;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a2f53;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 400; /* texto normal, sin negrita */
+}
+
+.consulta-table td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #e0e7ff;
+  color: #474f58;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.consulta-row:hover {
+  background-color: #e0e7ff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: scale(1.01);
+}
+
+.detalle-button,
+.editar-button {
+  color: #2563eb;
+  font-size: 1.1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.detalle-button:hover,
+.editar-button:hover {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 0 8px #2563ebaa;
+}
+
+.consulta-paginacion {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.paginacion-btn {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.7rem;
+  margin: 0 0.15rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #cbd5e1;
+  color: #1e293b;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.paginacion-btn:hover:not(:disabled) {
+  background-color: #1e293b;
+  color: white;
+}
+
+.paginacion-btn.activo {
+  background-color: #1e293b;
+  color: white;
+  box-shadow: 0 0 8px #2563ebcc;
+}
+
+.paginacion-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Modal detalle */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(30, 41, 59, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #2563eb;
+}
+.fancy-btn {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.fancy-btn:hover {
+  background: linear-gradient(90deg, #1e40af, #1d4ed8);
+  transform: scale(1.05);
+}
+* Estilo base nuevo-btn y fancy-btn (tu original) */
+.nuevo-btn {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  min-width: 160px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.fancy-btn {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  font-size: 0.95rem;
+}
+
+.fancy-btn:hover {
+  background: linear-gradient(90deg, #1e40af, #1d4ed8);
+  transform: scale(1.05);
+}
+
+/* Estilo amarillo que sobrescribe fondo y colores para nuevo-btn + btn-amarillo */
+.nuevo-btn.btn-amarillo {
+  background: #facc15 !important;  /* fondo amarillo sólido */
+  color: #1f2937 !important;       /* texto gris oscuro */
+  box-shadow: 0 4px 8px rgba(250, 204, 21, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.nuevo-btn.btn-amarillo:hover {
+  background: #eab308 !important;  /* amarillo más oscuro */
+  box-shadow: 0 6px 12px rgba(234, 179, 8, 0.7);
+  transform: scale(1.05);
+}

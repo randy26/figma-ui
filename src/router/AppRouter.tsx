@@ -2,7 +2,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Login from '../pages/Login';
 import Welcome from '../pages/Welcome';
-import ConsultaMuestra from '../pages/muestra/consultaMuestra';
+//import ConsultaMuestra from '../pages/muestra/consultaMuestra';
+import AltaPresupuesto from '../pages/presupuesto/AltaPresupuesto';
+import ConsultaPresupuestos from '../pages/presupuesto/consultaPresupuestos';
 
 const AppRouter = () => {
   const isAuthenticated = localStorage.getItem('auth') === 'true';
@@ -23,11 +25,35 @@ const AppRouter = () => {
         }
       />
       <Route
+        path="/presupuestos"
+        element={
+          isAuthenticated ? (
+            <Layout>
+              <ConsultaPresupuestos />
+            </Layout>
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+          path="/presupuestos/nuevo"
+          element={
+            isAuthenticated ? (
+              <Layout>
+                <AltaPresupuesto />
+              </Layout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+       />
+      <Route
         path="/observaciones"
         element={
           isAuthenticated ? (
             <Layout>
-              <ConsultaMuestra />
+              <AltaPresupuesto />
             </Layout>
           ) : (
             <Navigate to="/login" />
