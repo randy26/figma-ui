@@ -175,11 +175,11 @@ export default function AltaPresupuestoTabs() {
   const renderPaso = (key: string) => {
     switch (key) {
       case "datosGenerales": return <DatosGeneralesForm isReadOnly={readonly} />;
-      case "items": return <Item isReadOnly={readonly} />;
+      case "items": return <Item/>;
       case "viajes": return <ViajesTable isReadOnly={readonly} />;
-      case "facturacion": return <FacturacionMuestra isReadOnly={readonly} />;
-      case "publicacion": return <PublicacionMuestra isReadOnly={readonly} />;
-      case "terminacionContrato": return <TerminoPresupuesto isReadOnly={readonly} />;
+      case "facturacion": return <FacturacionMuestra/>;
+      case "publicacion": return <PublicacionMuestra />;
+      case "terminacionContrato": return <TerminoPresupuesto/>;
       default: return null;
     }
   };
@@ -188,16 +188,16 @@ export default function AltaPresupuestoTabs() {
 
   const onSubmit = methods.handleSubmit(async (data) => {
     try {
-      if (id) {
-        const resp = await PresupuestoService.actualizarPresupuesto(Number(id), data);
+      if (id) { 
+       await PresupuestoService.actualizarPresupuesto(Number(id), data);
         alert("Presupuesto actualizado correctamente");
       } else {
-        const resp = await PresupuestoService.enviarPresupuesto(data);
+        await PresupuestoService.enviarPresupuesto(data);
         alert("Presupuesto enviado correctamente");
       }
     } catch (error: any) {
       console.error(error);
-      alert(error.message || "Ocurrió un error al enviar el presupuesto");
+      alert(error.message || "Ocurrió un error al enviar el presupuesto" + data);
     }
   });
 
@@ -245,7 +245,7 @@ export default function AltaPresupuestoTabs() {
                 </button>
               ) : (
                 <button type="submit" className="slider-button submit">
-                  {id ? "Actualizar Presupuesto" : "Enviar Formulario"}
+                  {id ? "Actualizar Presupuesto" : "Guardar Presupuesto"}
                 </button>
               )}
             </div>

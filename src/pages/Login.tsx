@@ -2,23 +2,21 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../assets/styles/Login.css';
 import { FaUser, FaLock } from 'react-icons/fa';
-import { login } from '../service/authService';
+import { login as loginService } from '../service/authService';
+import { useAuth } from "../router/AuthContext";
 
 const Login = () => {
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
   const navigate = useNavigate();
+const { login: authLogin } = useAuth();
 
-  const handleLogin = async () => {
-    try {
-      const response = await login({ usuario: user, password: pass });
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('usuario', response.usuario);
-      navigate('/welcome');
-    } catch (err) {
-      alert(err instanceof Error ? err.message : 'Error inesperado');
-    }
-  };
+const handleLogin = async () => {
+  const response = await loginService({ usuario: user, password: pass });
+  authLogin(response.token, response.usuario); // Actualiza estado y localStorage
+  navigate('/welcome'); // Redirige inmediatamente
+};
+
   return (
     <div className="login-background">
       <div className="login-container">

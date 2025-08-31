@@ -1,4 +1,4 @@
-/* Container y texto */
+/* Container */
 .consulta-container {
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -9,50 +9,15 @@
   font-weight: 400;
 }
 
-/* Título con ícono */
+/* Título */
 .consulta-title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #1e3a8a; /* Azul fuerte elegante */
+  color: #1e3a8a;
   font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* Buscador con ícono */
-.input-icon-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  margin-bottom: 1.5rem;
-}
-
-.input-icon {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  color: #9ca3af;
-  pointer-events: none;
-}
-
-.consulta-buscador {
-  width: 100%;
-  padding: 8px 12px 8px 2.2rem;
-  font-size: 0.875rem;
-  border-radius: 8px;
-  border: 1.5px solid #d1d5db;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color 0.3s ease;
-  font-weight: 400;
-}
-
-.consulta-buscador:focus {
-  outline: none;
-  border-color: #93c5fd;
-  box-shadow: 0 0 4px #bfdbfe;
 }
 
 /* Tabla */
@@ -66,222 +31,134 @@
   overflow: hidden;
 }
 
-/* Cabecera de tabla azul suave */
 .consulta-table thead tr {
-  background: #325ba8; /* Azul suave */
+  background: #325ba8;
   color: white;
   font-weight: 500;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
 }
 
-.consulta-table thead th {
-  padding: 12px 16px;
-  text-align: left;
-  user-select: none;
-  font-weight: 500;
-}
-
-/* Filas */
 .consulta-table tbody tr {
   background: #ffffff;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  cursor: default;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  color: #374151;
-  font-weight: 400;
-  border-bottom: 1px solid #e3eaf2;
-}
-
-.consulta-table tbody tr:nth-child(even) {
-  background: #eef4fd; /* Azul claro suave */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .consulta-table tbody tr:hover {
-  background: #dde9fb; /* Hover azul grisáceo */
-  transform: scale(1.005);
+  background: #dde9fb;
 }
 
-.consulta-table tbody td {
-  padding: 12px 16px;
-  vertical-align: middle;
+.consulta-table td {
+  padding: 8px 12px;
 }
 
-/* Celdas */
-.ingreso-cell {
-  text-align: right;
-  font-weight: 500;
-  color: #475569;
-  font-family: 'Segoe UI', sans-serif;
-}
+/* Estado badge */
+.estado-badge.enviado { background: #16a34a; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; }
+.estado-badge.no-enviado { background: #9ca3af; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; }
 
-.detalle-cell {
-  text-align: center;
-}
-
-/* Botón detalle */
+/* Botones */
 .detalle-button {
-  background: transparent;
+  background: #1e3a8a;
+  color: white;
   border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
   cursor: pointer;
-  color: #475569;
-  padding: 4px;
-  transition: transform 0.2s ease, color 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .detalle-button:hover {
-  transform: scale(1.2);
-  color: #1e3a8a;
+  background: #14306a;
 }
 
-/* Paginación */
-.consulta-paginacion {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.3rem;
-  flex-wrap: wrap;
-}
-
-.paginacion-btn {
-  background: white;
-  border: 1.5px solid #d1d5db;
-  color: #6b7280;
-  font-weight: 400;
-  padding: 6px 12px;
+/* Detalle de la observación */
+.detalle-observacion {
+  background: #ffffff;
+  padding: 1rem 1.5rem;
   border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.85rem;
-}
-
-.paginacion-btn:hover:not(:disabled) {
-  border-color: #93c5fd;
-  color: #1e3a8a;
-  box-shadow: 0 0 4px #cbd5e1aa;
-}
-
-.paginacion-btn:disabled {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.paginacion-btn.activo {
-  background: #1e3a8a;
-  color: white;
-  border-color: #1e3a8a;
-  box-shadow: 0 0 6px #1e3a8a88;
-}
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.25);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeIn 0.3s ease forwards;
-}
-
-.modal-content {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', sans-serif;
-  color: #1f2937;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+  font-weight: 300; /* más delicada */
+  line-height: 1.3; /* menos separación vertical */
   font-size: 0.875rem;
-  font-weight: 400;
-  position: relative;
+  color: #344054;
 }
 
-.modal-title {
-  font-weight: 500;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: #334155;
+/* Imágenes */
+.imagenes-grid {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.modal-content p {
-  margin-bottom: 0.75rem;
+.imagen-muestra {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #475569;
+.imagen-placeholder {
+  width: 70px;
+  height: 70px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  border-radius: 4px;
   cursor: pointer;
-  transition: color 0.2s ease;
 }
 
-.modal-close:hover {
-  color: #1e293b;
+/* Botones detalle */
+.detalle-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.imagen-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.imagen-eliminar {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .consulta-table thead {
-    display: none;
-  }
+.imagen-muestra {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  object-fit: cover;
+  cursor: pointer;
+}
 
-  .consulta-table, .consulta-table tbody, .consulta-table tr, .consulta-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .consulta-table tr {
-    margin-bottom: 1rem;
-    background: white;
-    padding: 1rem 1.25rem;
-  }
-
-  .consulta-table td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-    font-size: 0.85rem;
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .consulta-table td:last-child {
-    border-bottom: none;
-  }
-
-  .consulta-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: 500;
-    color: #475569;
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  .detalle-cell {
-    text-align: right;
-  }
+.imagen-placeholder {
+  width: 70px;
+  height: 70px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
 }

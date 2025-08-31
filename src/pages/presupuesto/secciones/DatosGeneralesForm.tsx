@@ -1,12 +1,18 @@
 import styles from '../../../assets/styles/presupuesto/DatosGeneralesForm.module.css';
 import { useFormContext } from 'react-hook-form';
 import { useEffect, useState } from "react";
-import { obtenerMoneda, Moneda } from "../../../service/MonedaService";
-import { obtenerClientes, Cliente } from "../../../service/ClienteService";
-import { obtenerDerivantes, Derivante } from "../../../service/DerivanteService";
-import { obtenerContactos, Contacto } from "../../../service/ContactoService";
-import { obtenerEmpleados, Empleado } from "../../../service/EmpleadoService";
-import { obtenerUnidadesNegocio, UnidadNegocio } from "../../../service/unidadNegocioService";
+import { obtenerMoneda } from "../../../service/MonedaService";
+import type { Moneda } from "../../../service/MonedaService";
+import { obtenerClientes } from "../../../service/ClienteService";
+import type { Cliente } from "../../../model/Cliente";
+import { obtenerDerivantes } from "../../../service/DerivanteService";
+import type { Derivante } from "../../../model/Derivante";
+import { obtenerContactos } from "../../../service/ContactoService";
+import type { Contacto } from "../../../model/Contacto";
+import { obtenerEmpleados } from "../../../service/EmpleadoService";
+import type { Empleado } from "../../../model/Empleado";
+import { obtenerUnidadesNegocio } from "../../../service/unidadNegocioService";
+import type { UnidadNegocio } from "./../../../model/UnidadNegocio";
 
 interface DatosGeneralesFormProps {
   isReadOnly?: boolean;
@@ -110,13 +116,6 @@ const formatearFechaParaInput = (fecha: string) => {
   return `${yyyy}-${mm}-${dd}`; // lo que espera el input date
 };
 
-// Normalizador de fechas dd/MM/yyyy -> yyyy-MM-dd
-const normalizarFecha = (fecha?: string) => {
-  if (!fecha) return "";
-  const [dd, mm, yyyy] = fecha.split("/");
-  return `${yyyy}-${mm}-${dd}`;
-};
-
   const handleClienteChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (isReadOnly) return;
     const clienteId = event.target.value;
@@ -167,7 +166,7 @@ const normalizarFecha = (fecha?: string) => {
           </div>
           <div className={styles.formGroup}>
             <label className={styles.label}>Fecha de presupuesto</label>
-            <input {...register("fechaInicio", {
+            <input {...register("fechaPresupuesto", {
     pattern: {
       value: /^\d{2}\/\d{2}\/\d{4}$/,
       message: "Formato inválido (dd/mm/yyyy)"

@@ -5,18 +5,18 @@ import { useState, useEffect } from 'react';
 export default function TerminoPresupuesto() {
   const { register, watch, setValue } = useFormContext();
 
-  // Ahora el valor inicial es numérico (0 o 1)
-  const estadoValue = watch("facturacion.modo", 0);
-  const [toggleValue, setToggleValue] = useState<number>(estadoValue);
+  // watch del valor real del form, si viene null o undefined, usamos false
+  const estadoValue = watch("modo", false);
+  const [toggleValue, setToggleValue] = useState<boolean>(!!estadoValue);
 
   useEffect(() => {
-    setValue("facturacion.modo", toggleValue);
+    // guardamos como booleano o número según necesites
+    setValue("modo", toggleValue);
   }, [toggleValue, setValue]);
 
   return (
     <div className={styles.container}>
       <div className={styles.columns}>
-        {/* Contenedor columna vertical para Motivo + Estado */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: 280 }}>
           <div className={styles.formGroup}>
             <label className={styles.label}>Motivo</label>
@@ -30,9 +30,8 @@ export default function TerminoPresupuesto() {
             >
               <input
                 type="checkbox"
-                {...register("modo")}
-                checked={toggleValue === 1}
-                onChange={(e) => setToggleValue(e.target.checked ? 1 : 0)}
+                checked={toggleValue}
+                onChange={(e) => setToggleValue(e.target.checked)}
                 style={{ opacity: 0, width: 0, height: 0 }}
               />
               <span
@@ -44,7 +43,7 @@ export default function TerminoPresupuesto() {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  backgroundColor: toggleValue === 1 ? '#eb8e36ff' : '#ccc',
+                  backgroundColor: toggleValue ? '#eb8e36ff' : '#ccc',
                   transition: '.4s',
                   borderRadius: 28,
                 }}
@@ -54,7 +53,7 @@ export default function TerminoPresupuesto() {
                   position: 'absolute',
                   height: 22,
                   width: 22,
-                  left: toggleValue === 1 ? 22 : 3,
+                  left: toggleValue ? 22 : 3,
                   bottom: 3,
                   backgroundColor: 'white',
                   transition: '.4s',

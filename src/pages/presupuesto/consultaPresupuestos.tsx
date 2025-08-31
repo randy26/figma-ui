@@ -38,11 +38,10 @@ const ConsultaPresupuestos = () => {
 
   const datosFiltrados = useMemo(() => {
     const texto = busqueda.toLowerCase();
-    return presupuestos.filter(({ idPresupuesto, fechaPresupuesto, titulo, usuario, ordenDeCompra }) =>
+    return presupuestos.filter(({ idPresupuesto, fechaPresupuesto, titulo, ordenDeCompra }) =>
       idPresupuesto.toString().includes(texto) ||
       (fechaPresupuesto?.toLowerCase?.() || "").includes(texto) ||
       titulo.toLowerCase().includes(texto) ||
-      usuario.toLowerCase().includes(texto) ||
       (ordenDeCompra?.toLowerCase?.() || "").includes(texto)
     );
   }, [busqueda, presupuestos]);
@@ -114,22 +113,13 @@ const ConsultaPresupuestos = () => {
           <td>{fila.referencia || '-'}</td>
           <td aria-label="Estado Presupuesto">
           {fila.estadoPresupuesto ? (
-            <FaCheckCircle style={{ color: 'green' }} title="Activo" />
-          ) : (
             <FaTimesCircle style={{ color: 'red' }} title="Inactivo" />
+          ) : (
+            <FaCheckCircle style={{ color: 'green' }} title="Activo" />
           )}
         </td>
         <td className="detalle-cell">
           {fila.estadoPresupuesto ? (
-            <button
-              onClick={() => navigate(`/presupuestos/nuevo?id=${fila.idPresupuesto}&modo=editar`)}
-              className="editar-button"
-              title={`Editar presupuesto ${fila.idPresupuesto}`}
-              aria-label={`Editar presupuesto ${fila.idPresupuesto}`}
-            >
-              <HiPencil size={18} />
-            </button>
-          ) : (
             <button
               onClick={() => navigate(`/presupuestos/nuevo?id=${fila.idPresupuesto}&modo=detalle`)}
               className="detalle-button"
@@ -137,6 +127,15 @@ const ConsultaPresupuestos = () => {
               aria-label={`Ver detalle presupuesto ${fila.idPresupuesto}`}
             >
               <HiOutlineDocument size={18} />
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate(`/presupuestos/nuevo?id=${fila.idPresupuesto}&modo=editar`)}
+              className="editar-button"
+              title={`Editar presupuesto ${fila.idPresupuesto}`}
+              aria-label={`Editar presupuesto ${fila.idPresupuesto}`}
+            >
+              <HiPencil size={18} />
             </button>
           )}
         </td>

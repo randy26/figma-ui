@@ -1,4 +1,4 @@
-const API_URL = 'https://proana-1075540947695.us-central1.run.app/api';
+import { API_URL } from '../config/api.config';
 
 export interface LoginRequestDto {
   usuario: string;

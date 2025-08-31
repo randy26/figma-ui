@@ -1,8 +1,8 @@
 import { useFormContext } from "react-hook-form";
 import { useEffect, useState } from "react";
 import "../../../assets/styles/presupuesto/tipoPresupuesto.css";
-import { obtenerUnidadesNegocio, UnidadNegocio } from "../../../service/unidadNegocioService";
-
+import { obtenerUnidadesNegocio} from "../../../service/unidadNegocioService";
+import type {  UnidadNegocio } from "../../../service/unidadNegocioService";
 export default function TipoPresupuestoForm() {
   const { register } = useFormContext();
   const [unidades, setUnidades] = useState<UnidadNegocio[]>([]);

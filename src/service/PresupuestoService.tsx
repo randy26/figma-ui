@@ -1,7 +1,5 @@
-// src/services/PresupuestoService.tsx
 import axios from 'axios';
-
-const API_URL = 'https://proana-1075540947695.us-central1.run.app/api';
+import { API_URL } from '../config/api.config';
 
 export const PresupuestoService = {
   /**
@@ -79,6 +77,22 @@ export const PresupuestoService = {
       }
     }
   },
-
+/**
+ * Obtiene la lista de presupuestos con sus muestras desde la API.
+ * @returns Array de PresupuestoMuestraDTO.
+ */
+obtenerPresupuestosConMuestras: async () => {
+  try {
+    const response = await axios.get(`${API_URL}/presupuestos/presupuestos-muestras`);
+    return response.data;
+      } catch (error: any) {
+        console.error("❌ Error al obtener presupuestos con muestras:", error);
+        if (axios.isAxiosError(error)) {
+          throw new Error(error.response?.data?.message || "Error de conexión con la API.");
+        } else {
+          throw new Error("Error inesperado al obtener los presupuestos con muestras.");
+        }
+      }
+  }
   
 };

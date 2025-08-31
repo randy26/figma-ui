@@ -2,8 +2,16 @@ import "../../../assets/styles/presupuesto/ViajesTable.css";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { FaEdit, FaTrash, FaSave } from "react-icons/fa";
-import { Viaje } from "../../AltaPresupuestoTabs";
-
+//import { Viaje } from "../../AltaPresupuestoTabs";
+export type Viaje = {
+  id: number;
+  ubicacion: string;
+  costoViaticos: string;
+  cantidadViajes: string;
+  trasladoKm: string;
+  alojamientoDias: string;
+  viaticosUnidades: string;
+};
 interface Props {
   isReadOnly?: boolean;
 }

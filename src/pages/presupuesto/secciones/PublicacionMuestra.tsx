@@ -2,7 +2,8 @@ import '../../../assets/styles/presupuesto/PublicacionMuestra.css';
 import { useFormContext } from 'react-hook-form';
 
 export default function PublicacionMuestra() {
-  const { register } = useFormContext();
+  const { register, watch } = useFormContext();
+  const condicionesPublicacion = watch("condicionesPublicacion"); // <--- watch aquí
 
   return (
     <div className="publicacion-container">
@@ -10,8 +11,8 @@ export default function PublicacionMuestra() {
         <input
           type="checkbox"
           className="custom-checkbox"
-          defaultChecked
           {...register("condicionesPublicacion.autorizacionComercialPreviaDT")}
+          checked={condicionesPublicacion?.autorizacionComercialPreviaDT || false}
         />
         Autorización Comercial previa firma Director Técnico
       </label>
@@ -21,6 +22,7 @@ export default function PublicacionMuestra() {
           type="checkbox"
           className="custom-checkbox"
           {...register("condicionesPublicacion.autorizacionComercial")}
+          checked={condicionesPublicacion?.autorizacionComercial || false}
         />
         Con autorización Comercial
       </label>
@@ -30,6 +32,7 @@ export default function PublicacionMuestra() {
           type="checkbox"
           className="custom-checkbox"
           {...register("condicionesPublicacion.automaticamenteFirmaDT")}
+          checked={condicionesPublicacion?.automaticamenteFirmaDT || false}
         />
         Automáticamente (inmediato firma Director Técnico)
       </label>
@@ -39,6 +42,7 @@ export default function PublicacionMuestra() {
           type="checkbox"
           className="custom-checkbox"
           {...register("condicionesPublicacion.seInformaConReferencias")}
+          checked={condicionesPublicacion?.seInformaConReferencias || false}
         />
         Se informa con referencias
       </label>

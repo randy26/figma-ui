@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext,  } from "react-hook-form";
 import "../../../assets/styles/presupuesto/item.css";
-import { obtenerPaquetesAbm, PaqueteAbm } from "../../../service/paqueteService";
-import { obtenerReferenciaNormativaAbm, AbmReferenciaNormativa } from "../../../service/referenciaNormativaService";
-import { obtenerMatrizAbm, AbmMatriz } from "../../../service/matrizService";
-import { obtenerDeterminacionesAbm, AbmDeterminacion } from "../../../service/DeterminacionService";
+import { obtenerPaquetesAbm } from "../../../service/paqueteService";
+import type {PaqueteAbm } from "../../../service/paqueteService";
+import { obtenerReferenciaNormativaAbm } from "../../../service/referenciaNormativaService";
+import type { AbmReferenciaNormativa } from "../../../service/referenciaNormativaService";
 
+import { obtenerMatrizAbm } from "../../../service/matrizService";
+import type { AbmMatriz } from "../../../service/matrizService";
+import { obtenerDeterminacionesAbm} from "../../../service/DeterminacionService";
+import type { AbmDeterminacion } from "../../../service/DeterminacionService";
 export interface Determinacion {
   idDeterminacion: number;
   informa: boolean;
@@ -62,7 +66,9 @@ export interface Item {
 
 const ItemsTable = () => {
   const { setValue, register, watch } = useFormContext();
-  const items = watch("items"); // ya tenemos los items del form
+
+  // 🚀 Usamos watch para obtener los items del form
+  const items: Item[] = watch("items") || [];
 
   const [expandedItemId, setExpandedItemId] = useState<number | null>(null);
   const [editingItemId, setEditingItemId] = useState<number | null>(null);
@@ -125,7 +131,7 @@ const ItemsTable = () => {
         ? { idPaquete: 0, dtoCantidad: 0, dtoArbitrario: 0, dtoCliente: 0, dtoPorcentaje: 0, precioLista: 0, precioFinal: 0 }
         : { idMuestreo: 0, ubicacion: 0, fechaEstimada: "", cantidadMinima: 0, unidad: "", muestreadores: "", tiempoTotal: 0, consumibles: 0, precioMuestreo: 0 };
 
-    const updatedItems = items.map((item) =>
+    const updatedItems = items.map((item: Item) =>
       item.id === itemId ? { ...item, [tipo]: [...item[tipo], nuevaDet] } : item
     );
     setValue("items", updatedItems);
@@ -136,7 +142,7 @@ const ItemsTable = () => {
     index: number,
     tipo: "determinaciones" | "paquetes" | "muestreos"
   ) => {
-    const updatedItems = items.map((item) =>
+    const updatedItems = items.map((item: Item) =>
       item.id === itemId
         ? { ...item, [tipo]: item[tipo].filter((_: any, i: number) => i !== index) }
         : item
@@ -145,7 +151,7 @@ const ItemsTable = () => {
   };
 
   const handleChangeItem = (id: number, field: keyof Item, value: any) => {
-    const updatedItems = items.map((it) => (it.id === id ? { ...it, [field]: value } : it));
+    const updatedItems = items.map((it: Item) => (it.id === id ? { ...it, [field]: value } : it));
     setValue("items", updatedItems);
   };
 
@@ -156,7 +162,7 @@ const ItemsTable = () => {
     value: any,
     tipo: "determinaciones" | "muestreos"
   ) => {
-    const updatedItems = items.map((it) =>
+    const updatedItems = items.map((it: Item) =>
       it.id === itemId
         ? {
             ...it,
@@ -173,7 +179,7 @@ const ItemsTable = () => {
     field: string,
     value: number
   ) => {
-    const updatedItems = items.map((item) => {
+    const updatedItems = items.map((item: Item) => {
       if (item.id !== itemId) return item;
       const updatedPaquetes = item.paquetes.map((d: any, i: number) => {
         if (i !== index) return d;
@@ -188,28 +194,31 @@ const ItemsTable = () => {
     });
     setValue("items", updatedItems);
   };
-const handleChangeMuestreo = (
-  itemId: number,
-  index: number,
-  field: keyof Muestreo,
-  value: any
-) => {
-  const updatedItems = items.map((it) =>
-    it.id === itemId
-      ? {
-          ...it,
-          muestreos: it.muestreos.map((d, i) =>
-            i === index ? { ...d, [field]: value } : d
-          ),
-        }
-      : it
-  );
-  setValue("items", updatedItems);
-};
+
+  const handleChangeMuestreo = (
+    itemId: number,
+    index: number,
+    field: keyof Muestreo,
+    value: any
+  ) => {
+    const updatedItems = items.map((it: Item) =>
+      it.id === itemId
+        ? {
+            ...it,
+            muestreos: it.muestreos.map((d, i) =>
+              i === index ? { ...d, [field]: value } : d
+            ),
+          }
+        : it
+    );
+    setValue("items", updatedItems);
+  };
+
   const removeItem = (id: number) => {
     const updatedItems = items.filter((i: any) => i.id !== id);
     setValue("items", updatedItems);
   };
+
   return (
     <div className="items-container">
       <div className="items-header">
@@ -218,7 +227,7 @@ const handleChangeMuestreo = (
           className="new-item-btn"
           onClick={() => {
             const newId = items.length + 1;
-            setItems([
+            setValue("items",[
               ...items,
               {
                 id: newId,
@@ -262,7 +271,7 @@ const handleChangeMuestreo = (
           </tr>
         </thead>
         <tbody>
-          {items.map((item) => (
+          {items.map((item : Item) => (
             <React.Fragment key={item.id}>
               <tr>
                 <td>

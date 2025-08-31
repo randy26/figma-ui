@@ -1,10 +1,8 @@
-import axios from "axios";
-import { Cliente } from "../model/Cliente";
-
-const API_URL = 'https://proana-1075540947695.us-central1.run.app/api';
+import type { Cliente } from "../model/Cliente";
+import { API_URL } from '../config/api.config';
 
 export const obtenerClientes = async (): Promise<Cliente[]> => {
-  const response = await fetch(API_URL+"/api/cliente/clientes");
+  const response = await fetch(API_URL+"/cliente/clientes");
   return response.json();
 };
 
